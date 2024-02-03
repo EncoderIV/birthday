@@ -1,0 +1,21 @@
+body{
+    background-color: aqua; 
+    /* try making wavy curly section background*/
+    
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#cake{
+    border: 0px;
+    padding: 20v;
+    /* remove outline from the svg frame either here or figma   
+    remove shadow from svg so it doesn't interfere with css shadows 
+    try smoothing out the edge of the cake , adding an outline, antialiasing, etc */
+    width: 80%;
+    height: auto;
+}
