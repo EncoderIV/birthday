@@ -34,7 +34,7 @@ body{
 }
 
 
-#cake{
+#cake-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,10 +42,11 @@ body{
     padding: 10vh;
 }
 
-#cake-image{ 
+#cake{ 
     width: 100%;
     height: auto;
+}
+
+#cake_undecorated{
     cursor: pointer;
-    border: 5px solid red;
-    border-radius: 25%;
 }

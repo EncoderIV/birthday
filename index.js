@@ -1,5 +1,5 @@
 const ageBox = document.getElementById("age-box-to-display");
-
+//const cake = document.getElementById("cake-image").contentDocument;
 let age = 0 ;
 
 // hard coded index 0 cuz won't actually ever have more than 1 cake , so technically should have used id instead of class here
