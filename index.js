@@ -8,4 +8,9 @@ let age = 0 ;
 
 function addCandle(){
     age = age + 1 ;
+    displayAge();
+}
+
+function displayAge(){
+    ageBox[0].value = age.toString();
 }
