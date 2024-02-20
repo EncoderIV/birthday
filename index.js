@@ -1,5 +1,4 @@
-const cake = document.getElementsByClassName("cake-image");
-const ageBox = document.getElementsByClassName("age-box-to-display");
+const ageBox = document.getElementById("age-box-to-display");
 
 let age = 0 ;
 
@@ -12,5 +11,5 @@ function addCandle(){
 }
 
 function displayAge(){
-    ageBox[0].value = age.toString();
+    ageBox.value = age.toString();
 }
