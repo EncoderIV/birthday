@@ -1,0 +1,44 @@
+*{
+    font-family: 'Brush Script MT', cursive ,"sans-serif";
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: aqua;
+}
+
+.age-display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding-top: 15vh;
+    font-size: 5vh;
+    font-weight: bold;
+    
+}
+
+.age-box-to-display{
+    border: 5px solid purple;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: white;
+
+}
+
+
+.cake{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cake-image{
+    padding: 30vh;
+    width: 100%;
+    height: auto;
+}
