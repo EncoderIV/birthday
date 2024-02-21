@@ -33,11 +33,11 @@ function CreateCandle() {
     // now we just hardcode the candle_small svg over here :):
 
     const top = document.createElementNS(xmlns , "ellipse");
-    top.setAttribute(null , "cx" ,"6" );
-    top.setAttribute(null , "cy" ,"14.5385" );
-    top.setAttribute(null , "rx" ,"6" );
-    top.setAttribute(null , "ry" ,"3.46154" );
-    top.setAttribute(null , "fill" , "3.46154", "url(#paint0_linear_39_2)" );
+    top.setAttributeNS(null , "cx" ,"6" );
+    top.setAttributeNS(null , "cy" ,"14.5385" );
+    top.setAttributeNS(null , "rx" ,"6" );
+    top.setAttributeNS(null , "ry" ,"3.46154" );
+    top.setAttributeNS(null , "fill" , "#12E28B" );
 
 
     const lateral = document.createElementNS(xmlns , "rect");
