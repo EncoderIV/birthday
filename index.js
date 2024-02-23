@@ -88,17 +88,44 @@ function CreateCandle() {
     candleGroup.appendChild(path);
     candleGroup.appendChild(defs);
 
-    candle.appendChild(candleGroup);
+    //candle.appendChild(candleGroup);
 
     //need to posittion properly now
-    //positionCandle();
-    cake_undecorated.appendChild(candle);
+    const cakeFrame = document.getElementById("Frame-3");
+    positionCandle(candleGroup);
+    cakeFrame.appendChild(candleGroup);
 
     //add animation later on 
 
 }
 
 
-function positionCandleI(){
+function positionCandle(candle){
+    //for now hardcode those values
+
+    //range y position
     
+    // max and min coordinates of cake's top layer minus height of the candle, cuz origin top left with y growing downward
+    const ymax = (52.5 + 34.5) - 18 -6;
+    const ymin = (52.5 - 34.5) - 18 +6 ;
+    
+    const ypos = Math.floor(Math.random() * (ymax - ymin + 1) ) + ymin;
+
+    //range of x position (in function of y )
+
+    // -> isolate x in ellipse formula
+    let xmax = Math.sqrt((115**2)* (1- (((ypos - 34.5)**2)/(34.5**2)))) + 115-12;
+    let xmin = 115 - 12 - (Math.sqrt((115**2)* (1- (((ypos - 34.5)**2)/(34.5**2))))) ;
+
+    //correction/offset by substracting / adding circle base  times arbitraty multiplier for styling
+    //avoids candle dangling on the edge
+    xmax = xmax -12*1.4;
+    xmin = xmin +12*2 ;
+
+    const xpos = Math.floor(Math.random() * (xmax - xmin + 1) ) + xmin;
+
+    
+    //finally translating horizontally and vertically the candle to be in the desired spot
+    candle.setAttributeNS(null, "transform", "translate(" + xpos +"," + ypos + ")" )
+
 }
