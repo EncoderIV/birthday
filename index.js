@@ -1,6 +1,8 @@
+//on website load
 const ageBox = document.getElementById("age-box-to-display");
 const cake = document.getElementById("cake");
 let age = 0 ;
+microfono() ;
 
 // hard coded index 0 cuz won't actually ever have more than 1 cake , so technically should have used id instead of class here
 //cake[0].addEventListener("click" , addCandle);
@@ -10,6 +12,8 @@ function addCandle(){
     age = age + 1 ;
     displayAge();
     CreateCandle();
+    positionCandle(/*something*/);
+    animateCandle(/*something */);
 }
 
 function displayAge(){
@@ -90,6 +94,10 @@ function CreateCandle() {
 
     //candle.appendChild(candleGroup);
 
+    //for testing purpose
+    candleGroup.setAttributeNS(null , "onclick" , "removeCandle()");
+
+
     //need to posittion properly now
     const cakeFrame = document.getElementById("Frame-3");
     positionCandle(candleGroup);
@@ -128,4 +136,65 @@ function positionCandle(candle){
     //finally translating horizontally and vertically the candle to be in the desired spot
     candle.setAttributeNS(null, "transform", "translate(" + xpos +"," + ypos + ")" )
 
+}
+
+function removeCandle(){
+    /*check if there are candle to remove 
+    might need to ry and cath errors, or smth 
+    
+    then randomly select one or just pick the first one in the list - depending on how it looks on the site
+    like are the first candles never blown, is it obious the canldes are getting blown in order of appeareance or revers order ? etc...
+
+
+
+    element.remove();
+    */
+
+    //might fail initialisation if no candles,  
+
+    const candlesArray = document.getElementsByClassName("candle");
+    
+    if ( candlesArray.length !== 0){
+      candlesArray[0].remove();
+      age = age - 1;
+      displayAge();
+    }
+    
+}
+
+function microfono(){
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream) {
+        audioContext = new AudioContext();
+        analyser = audioContext.createAnalyser();
+        microphone = audioContext.createMediaStreamSource(stream);
+        javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+        analyser.smoothingTimeConstant = 0.8;
+        analyser.fftSize = 1024;
+        microphone.connect(analyser);
+        analyser.connect(javascriptNode);
+        javascriptNode.connect(audioContext.destination);
+        javascriptNode.onaudioprocess = function() {
+            var array = new Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(array);
+            var values = 0;
+      
+            var length = array.length;
+            for (var i = 0; i < length; i++) {
+              values += (array[i]);
+            }
+      
+            var average = values / length;
+      
+            if(Math.round(average)>15)
+            {
+              console.log(Math.round(average));
+              //document.getElementById("lvl").innerHTML = Math.round(average)-10;
+              removeCandle();
+            }
+          
+        }
+        })
+        .catch(function(err) {
+          /* handle the error */
+      });
 }
